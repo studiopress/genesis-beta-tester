@@ -3,7 +3,7 @@ Contributors: nathanrice, studiopress, wpmuguru
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5553118
 Tags: genesis, genesiswp, studiopress
 Requires at least: 3.9
-Tested up to: 3.9.1
+Tested up to: 4.3.1
 Stable tag: 0.9.1
 
 This plugin lets you one-click update to the latest Genesis release, even if it's still in beta.
@@ -30,8 +30,11 @@ If you activate the plugin and do not see the update notification, that likely m
 
 == Changelog ==
 
-= 0.9.0 =
-* Initial Release
+= 0.9.2 =
+* Make POT file.
+
+= 0.9.1 =
+* Compatibility with 3.9+
 
 = 0.9.0 =
-* Compatibility with 3.9+
+* Initial Release
