@@ -29,7 +29,7 @@
     "description": "Genesis Beta Tester lets you one-click update to the latest version of Genesis, even if it is still in beta.",
     "author": "StudioPress",
     "authoruri": "http://www.studiopress.com/",
-    "version": "0.9.2",
+    "version": "0.9.3",
     "license": "GPL-2.0+",
     "licenseuri": "http://www.gnu.org/licenses/gpl-2.0.html",
     "textdomain": "genesis-beta-tester"

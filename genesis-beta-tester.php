@@ -6,7 +6,10 @@
 	Author: Nathan Rice
 	Author URI: http://www.nathanrice.net/
 
-	Version: 0.9.2
+	Version: 0.9.3
+
+	Text Domain: genesis-beta-tester
+	Domain Path: /languages/
 
 	License: GNU General Public License v2.0 (or later)
 	License URI: http://www.opensource.org/licenses/gpl-license.php
@@ -17,7 +20,7 @@ register_activation_hook( __FILE__, 'genesis_beta_tester_activation_hook' );
  * Activation Hook
  */
 function genesis_beta_tester_activation_hook() {
-	
+
 	$latest = '1.9.2';
 
 	$theme_info = get_theme_data( TEMPLATEPATH . '/style.css' );
@@ -31,10 +34,10 @@ function genesis_beta_tester_activation_hook() {
 		deactivate_plugins( plugin_basename( __FILE__ ) ); /** Deactivate ourself */
 		wp_die( sprintf( __( 'Sorry, you cannot activate without Genesis %s or greater', 'genesis-beta-tester' ), $latest ) );
 	}
-	
+
 	/** Delete the Genesis update transient to force an update check */
 	delete_transient( 'genesis-update' );
-	
+
 }
 
 /**
@@ -44,21 +47,23 @@ function genesis_beta_tester_activation_hook() {
  * @since 1.0
  */
 class Genesis_Beta_Tester {
-	
+
 	/** Constructor */
 	function __construct() {
-		
+
 		add_filter( 'genesis_update_remote_post_options', array( $this, 'update_remote_post_options_filter' ) );
-	
+
+		load_plugin_textdomain( 'genesis-beta-tester', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
+
 	}
-	
+
 	/** Filter to flag for beta testing */
 	function update_remote_post_options_filter( $options ) {
-		
+
 		$options['body']['beta_tester'] = 1;
-		
+
 		return $options;
-		
+
 	}
 
 }
