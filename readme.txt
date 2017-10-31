@@ -3,8 +3,8 @@ Contributors: nathanrice, studiopress, wpmuguru
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5553118
 Tags: genesis, genesiswp, studiopress
 Requires at least: 3.9
-Tested up to: 4.3.1
-Stable tag: 0.9.3
+Tested up to: 4.8.3
+Stable tag: 0.9.4
 
 This plugin lets you one-click update to the latest Genesis release, even if it's still in beta.
 
@@ -29,6 +29,9 @@ Not just yet, but that feature is coming.
 If you activate the plugin and do not see the update notification, that likely means that there is no beta release currently available. However, if you know there is a beta update available, and still do not see the notification, try visiting the "Dashboard -> Updates" screen and look for the update there.
 
 == Changelog ==
+
+= 0.9.4 =
+* Version bump
 
 = 0.9.3 =
 * Add textdomain loader
