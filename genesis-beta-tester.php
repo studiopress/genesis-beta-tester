@@ -6,7 +6,7 @@
 	Author: Nathan Rice
 	Author URI: http://www.nathanrice.net/
 
-	Version: 0.9.4
+	Version: 0.9.5
 
 	Text Domain: genesis-beta-tester
 	Domain Path: /languages/
@@ -51,16 +51,18 @@ class Genesis_Beta_Tester {
 	/** Constructor */
 	function __construct() {
 
-		add_filter( 'genesis_update_remote_post_options', array( $this, 'update_remote_post_options_filter' ) );
+		add_filter( 'http_request_args', array( $this, 'update_remote_post_options_filter' ), 10, 2 );
 
 		load_plugin_textdomain( 'genesis-beta-tester', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
 
 	}
 
 	/** Filter to flag for beta testing */
-	function update_remote_post_options_filter( $options ) {
+	function update_remote_post_options_filter( $options, $url ) {
 
-		$options['body']['beta_tester'] = 1;
+		if ( 'https://api.genesistheme.com/update-themes/' === $url ) {
+			$options['body']['beta_tester'] = 1;
+		}
 
 		return $options;
 

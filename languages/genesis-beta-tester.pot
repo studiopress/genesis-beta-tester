@@ -1,14 +1,14 @@
-# Copyright (C) 2015 Nathan Rice
+# Copyright (C) 2018 Nathan Rice
 # This file is distributed under the GNU General Public License v2.0 (or later).
 msgid ""
 msgstr ""
-"Project-Id-Version: Genesis Beta Tester 0.9.3\n"
+"Project-Id-Version: Genesis Beta Tester 0.9.5\n"
 "Report-Msgid-Bugs-To: StudioPress <translations@studiopress.com>\n"
-"POT-Creation-Date: 2015-10-12 02:12:50+00:00\n"
+"POT-Creation-Date: 2018-11-08 12:15:44+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
 "Last-Translator: StudioPress <translations@studiopress.com>\n"
 "Language-Team: English <translations@studiopress.com>\n"
 "X-Generator: grunt-wp-i18n 0.4.4\n"
