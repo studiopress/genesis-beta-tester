@@ -25,7 +25,7 @@ function genesis_beta_tester_activation_hook() {
 
 	$latest = '1.9.2';
 
-	$theme_info = wp_get_theme( get_template_directory() . '/style.css' );
+	$theme_info = wp_get_theme();
 
 	if ( 'genesis' !== basename( get_template_directory() ) ) {
 		deactivate_plugins( plugin_basename( __FILE__ ) ); /** Deactivate ourself */
@@ -33,10 +33,10 @@ function genesis_beta_tester_activation_hook() {
 		wp_die( sprintf( esc_html( __( 'Sorry, you can\'t activate unless you have installed <a href="%s">Genesis</a>', 'genesis-beta-tester' ), 'http://www.studiopress.com/themes/genesis' ) ) );
 	}
 
-	if ( version_compare( $theme_info['Version'], $latest, '<' ) ) {
+	if ( version_compare( $theme_info->get( 'Version' ), $latest, '<' ) ) {
 		deactivate_plugins( plugin_basename( __FILE__ ) ); /** Deactivate ourself */
 		/* Translators: The string is the lowest version of Genesis needed to activate. */
-		wp_die( sprintf( esc_html( __( 'Sorry, you cannot activate without Genesis %s or greater', 'genesis-beta-tester' ), $latest ) ) );
+		wp_die( sprintf( esc_html( __( 'Sorry, you cannot activate without Genesis %s or greater', 'genesis-beta-tester' ) ), esc_attr( $latest ) ) );
 	}
 
 	/** Delete the Genesis update transient to force an update check */
