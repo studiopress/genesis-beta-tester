@@ -42,40 +42,11 @@ function genesis_beta_tester_activation_hook() {
 
 }
 
-/**
- * The main class.
- *
- * @package Genesis Beta Tester
- * @since 1.0
- */
-class Genesis_Beta_Tester {
+define( 'GENESIS_BETA_TESTER_DIR', plugin_dir_path( __FILE__ ) );
+define( 'GENESIS_BETA_TESTER_URL', plugins_url( '', __FILE__ ) );
 
-	/** Constructor */
-	public function __construct() {
+require_once GENESIS_BETA_TESTER_DIR . '/includes/class-genesis-beta-tester.php';
 
-		add_filter( 'http_request_args', array( $this, 'update_remote_post_options_filter' ), 10, 2 );
-
-		load_plugin_textdomain( 'genesis-beta-tester', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
-
-	}
-
-	/**
-	 * Filter to flag for beta testing
-	 *
-	 * @param array $options Options.
-	 * @param array $url URL.
-	 */
-	public function update_remote_post_options_filter( $options, $url ) {
-
-		if ( 'https://api.genesistheme.com/update-themes/' === $url ) {
-			$options['body']['beta_tester'] = 1;
-		}
-
-		return $options;
-
-	}
-
-}
 
 add_action( 'plugins_loaded', 'genesis_beta_tester_init' );
 /**
