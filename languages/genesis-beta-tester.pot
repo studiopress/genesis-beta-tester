@@ -24,13 +24,13 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Textdomain-Support: yes\n"
 
-#: genesis-beta-tester.php:30
+#: genesis-beta-tester.php:31
 msgid ""
 "Sorry, you can't activate unless you have installed <a "
 "href=\"%s\">Genesis</a>"
 msgstr ""
 
-#: genesis-beta-tester.php:35
+#: genesis-beta-tester.php:37
 msgid "Sorry, you cannot activate without Genesis %s or greater"
 msgstr ""
 
