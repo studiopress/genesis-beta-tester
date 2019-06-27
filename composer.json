@@ -2,7 +2,7 @@
 	"name": "studiopress/genesis-beta-tester",
 	"type": "wordpress-plugin",
 	"description": "This plugin lets you one-click update to the latest Genesis release, even if it's still in beta.",
-	"homepage": "https://github.com/studiopress/genesis-tabs",
+	"homepage": "https://github.com/studiopress/genesis-beta-tester",
 	"license": "GPL-2.0-or-later",
 	"require": {
 		"php": "^5.3 || ^7",

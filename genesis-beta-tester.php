@@ -28,7 +28,7 @@ function genesis_beta_tester_activation_hook() {
 	if ( 'genesis' !== basename( get_template_directory() ) ) {
 		deactivate_plugins( plugin_basename( __FILE__ ) ); /** Deactivate ourself */
 		/* Translators: The string is a url to the genesis framework. */
-		wp_die( sprintf( esc_html( __( 'Sorry, you can\'t activate unless you have installed <a href="%s">Genesis</a>', 'genesis-beta-tester' ), 'http://www.studiopress.com/themes/genesis' ) ) );
+		wp_die( sprintf( esc_html( __( 'Sorry, you can\'t activate unless you have installed <a href="%s">Genesis</a>', 'genesis-beta-tester' ) ), 'http://www.studiopress.com/themes/genesis' ) );
 	}
 
 	if ( version_compare( wp_get_theme()->parent()->get( 'Version' ), $latest, '<' ) ) {
