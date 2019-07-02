@@ -7,21 +7,11 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "grunt": "*",
-    "grunt-autoprefixer": "*",
-    "grunt-checktextdomain": "*",
-    "grunt-contrib-cssmin": "*",
-    "grunt-contrib-imagemin": "*",
-    "grunt-contrib-jshint": "*",
-    "grunt-contrib-uglify": "*",
-    "grunt-contrib-watch": "*",
-    "grunt-csscomb": "*",
-    "grunt-jsbeautifier": "*",
-    "grunt-jsvalidate": "*",
-    "grunt-phplint": "*",
-    "grunt-styledocco": "*",
-    "grunt-wp-i18n": "*",
-    "load-grunt-tasks": "*"
+    "node-wp-i18n": "^1.2.3"
+  },
+  "scripts": {
+    "makepot": "wpi18n makepot --exclude=vendor,node_modules",
+    "addtextdomain": "wpi18n addtextdomain --exclude=vendor,node_modules"
   },
   "plugin": {
     "name": "Genesis Beta Tester",
