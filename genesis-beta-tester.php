@@ -6,13 +6,13 @@
  * Author: Nathan Rice
  * Author URI: http://www.nathanrice.net/
 
- * Version: 0.9.5
+ * Version: 1.0.0
 
  * Text Domain: genesis-beta-tester
  * Domain Path: /languages/
 
  * License: GNU General Public License v2.0 (or later)
- * License URI: http://www.opensource.org/licenses/gpl-license.php
+ * License URI: https://opensource.org/licenses/gpl-license.php
  *
  * @package genesis-beta-tester
  */
