@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: genesis, genesiswp, studiopress
 Requires at least: 3.9
 Tested up to: 5.2.2
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 
 This plugin lets you one-click update to the latest Genesis release, even if it's still in beta.
 
