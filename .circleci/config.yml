@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+    wp-svn: studiopress/wp-svn@dev:first
+
 jobs:
   test:
     docker:
@@ -17,6 +20,19 @@ commands:
 
 workflows:
   version: 2
-  check-wp-cs:
+  test-deploy:
     jobs:
       - test
+      - approval-for-deploy-tested-up-to-bump:
+          type: approval
+          requires:
+            - test
+          filters:
+            tags:
+              ignore: /.*/
+            branches:
+              only: /^bump-tested-up-to.*/
+      - wp-svn/deploy-tested-up-to-bump:
+          context: genesis-svn
+          requires:
+            - approval-for-deploy-tested-up-to-bump
