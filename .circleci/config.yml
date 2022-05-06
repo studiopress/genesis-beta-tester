@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-    wp-svn: studiopress/wp-svn@dev:first
+    wp-svn: studiopress/wp-svn@0.1.0
 
 jobs:
   test:
