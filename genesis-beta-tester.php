@@ -55,3 +55,17 @@ add_action( 'plugins_loaded', 'genesis_beta_tester_init' );
 function genesis_beta_tester_init() {
 	new Genesis_Beta_Tester();
 }
+
+/**
+ * Initialize checking of plugin updates from WP Engine.
+ */
+function genesis_beta_tester_check_for_upgrades() {
+	$properties = array(
+		'plugin_slug'     => 'genesis-beta-tester',
+		'plugin_basename' => plugin_basename( __FILE__ ),
+	);
+
+	require_once __DIR__ . '/includes/class-genesis-beta-tester-plugin-updater.php';
+	new Genesis_Beta_Tester_Plugin_Updater( $properties );
+}
+add_action( 'admin_init', 'genesis_beta_tester_check_for_upgrades' );
