@@ -2,4 +2,13 @@
 .gitignore
 .gitattributes
 .svnignore
+.nvmrc
+.DS_Store
+.circleci/
+package.json
+package-lock.json
+composer.json
+composer.lock
 node_modules
+scripts/
+*.zip

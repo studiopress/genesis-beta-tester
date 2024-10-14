@@ -6,12 +6,12 @@
     "url": "https://github.com/copyblogger/genesis-beta-tester"
   },
   "dependencies": {},
-  "devDependencies": {
-    "node-wp-i18n": "^1.2.3"
-  },
   "scripts": {
-    "makepot": "wpi18n makepot --exclude=vendor,node_modules",
-    "addtextdomain": "wpi18n addtextdomain --exclude=vendor,node_modules"
+    "zip": "node scripts/create-zip.js"
+  },
+  "devDependencies": {
+    "adm-zip": "^0.5.16",
+    "minimatch": "^10.0.1"
   },
   "plugin": {
     "name": "Genesis Beta Tester",
