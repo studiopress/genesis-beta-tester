@@ -1,7 +1,7 @@
 version: 2.1
 
-orbs:
-  wp-svn: studiopress/wp-svn@0.1
+# orbs:
+#   wp-svn: studiopress/wp-svn@0.1
 
 jobs:
   test:
@@ -23,16 +23,16 @@ workflows:
   test-deploy:
     jobs:
       - test
-      - approval-for-deploy-tested-up-to-bump:
-          type: approval
-          requires:
-            - test
-          filters:
-            tags:
-              ignore: /.*/
-            branches:
-              only: /^bump-tested-up-to.*/
-      - wp-svn/deploy-tested-up-to-bump:
-          context: genesis-svn
-          requires:
-            - approval-for-deploy-tested-up-to-bump
+      # - approval-for-deploy-tested-up-to-bump:
+      #     type: approval
+      #     requires:
+      #       - test
+      #     filters:
+      #       tags:
+      #         ignore: /.*/
+      #       branches:
+      #         only: /^bump-tested-up-to.*/
+      # - wp-svn/deploy-tested-up-to-bump:
+      #     context: genesis-svn
+      #     requires:
+      #       - approval-for-deploy-tested-up-to-bump
