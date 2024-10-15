@@ -6,12 +6,12 @@
     "url": "https://github.com/copyblogger/genesis-beta-tester"
   },
   "dependencies": {},
-  "devDependencies": {
-    "node-wp-i18n": "^1.2.3"
-  },
   "scripts": {
-    "makepot": "wpi18n makepot --exclude=vendor,node_modules",
-    "addtextdomain": "wpi18n addtextdomain --exclude=vendor,node_modules"
+    "zip": "node scripts/create-zip.js"
+  },
+  "devDependencies": {
+    "adm-zip": "^0.5.16",
+    "minimatch": "^10.0.1"
   },
   "plugin": {
     "name": "Genesis Beta Tester",
@@ -19,7 +19,7 @@
     "description": "Genesis Beta Tester lets you one-click update to the latest version of Genesis, even if it is still in beta.",
     "author": "StudioPress",
     "authoruri": "http://www.studiopress.com/",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "license": "GPL-2.0+",
     "licenseuri": "http://www.gnu.org/licenses/gpl-2.0.html",
     "textdomain": "genesis-beta-tester"
