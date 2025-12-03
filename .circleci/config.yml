@@ -1,28 +1,87 @@
 version: 2.1
 
 orbs:
-  wp-svn: studiopress/wp-svn@0.1
+  wp-svn: studiopress/wp-svn@0.2
 
 jobs:
   test:
     docker:
       - image: circleci/php:7.3.3-stretch-node-browsers
+    working_directory: ~/project
     steps:
       - checkout
       - prepare-environment
       - run: composer phpcs
 
+  zip_artifacts:
+    docker:
+      - image: circleci/php:7.3.3-stretch-node-browsers
+    working_directory: ~/project
+    steps:
+      - checkout
+      - run:
+          name: Install Node dependencies
+          command: |
+            npm ci
+      - run:
+          name: Install wp-cli
+          command: |
+            curl -o /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+            chmod +x /usr/local/bin/wp
+      - run:
+          name: Build plugin zips and WPE info.json
+          command: |
+            npm run zip:all
+      - store_artifacts:
+          path: artifacts/wp.org
+          destination: wp.org
+      - store_artifacts:
+          path: artifacts/wpe
+          destination: wpe
+
+  svn_deploy_tag:
+    docker:
+      - image: circleci/php:7.3.3-stretch-node-browsers
+    working_directory: ~/project
+    steps:
+      - checkout
+      - wp-svn/deploy-plugin:
+          plugin-path: .
+
 commands:
- prepare-environment:
-   description: "Install dependencies."
-   steps:
-     - run: composer install
+  prepare-environment:
+    description: "Install dependencies."
+    steps:
+      - run: composer install
 
 workflows:
   version: 2
   test-deploy:
     jobs:
       - test
+      - zip_artifacts:
+          requires:
+            - test
+      - wp-svn/deploy-plugin:
+          name: svn_deploy_dry_run
+          dry-run: true
+          plugin-path: .
+          requires:
+            - test
+          filters:
+            tags:
+              only: /^\d+\.\d+\.\d+$/
+            branches:
+              ignore: /.*/
+      - approval-for-plugin-deploy:
+          type: approval
+          requires:
+            - svn_deploy_dry_run
+          filters:
+            tags:
+              only: /^\d+\.\d+\.\d+$/
+            branches:
+              ignore: /.*/
       - approval-for-deploy-tested-up-to-bump:
           type: approval
           requires:
@@ -36,3 +95,14 @@ workflows:
           context: genesis-svn
           requires:
             - approval-for-deploy-tested-up-to-bump
+      - svn_deploy_tag:
+          context: genesis-svn
+          requires:
+            - svn_deploy_dry_run
+            - approval-for-plugin-deploy
+          filters:
+            tags:
+              only: /^\d+\.\d+\.\d+$/
+            branches:
+              ignore: /.*/
+
