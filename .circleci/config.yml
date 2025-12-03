@@ -26,8 +26,12 @@ jobs:
       - run:
           name: Install wp-cli
           command: |
-            curl -o /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-            chmod +x /usr/local/bin/wp
+            mkdir -p /tmp/wp-cli
+            curl -o /tmp/wp-cli/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+            chmod +x /tmp/wp-cli/wp
+            echo 'export PATH=/tmp/wp-cli:$PATH' >> $BASH_ENV
+            source $BASH_ENV
+            wp --info
       - run:
           name: Build plugin zips and WPE info.json
           command: |
