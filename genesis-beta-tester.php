@@ -6,7 +6,7 @@
  * Author: Nathan Rice
  * Author URI: http://www.nathanrice.net/
 
- * Version: 1.0.2
+ * Version: 1.0.3
 
  * Text Domain: genesis-beta-tester
  * Domain Path: /languages/

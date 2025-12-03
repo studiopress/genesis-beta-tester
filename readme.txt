@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: genesis, genesiswp, studiopress
 Requires at least: 3.9
 Tested up to: 6.9
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 Requires PHP: 8.3
 
 This plugin lets you one-click update to the latest Genesis release, even if it's still in beta.
@@ -31,8 +31,12 @@ If you activate the plugin and do not see the update notification, that likely m
 
 == Changelog ==
 
-= 1.0.2 =
-* Genesis Beta Tester now uses its own update mechanism from WP Engine servers.
+= 1.0.3 =
+* Serve updates from WP.org by default unless the plugin was installed via WP Engine's servers.
+* Bump 'tested up to' to WordPress 6.9.
+
+= 1.0.2 = 
+* Genesis Beta Tester now uses its own update mechanism from WP Engine servers. (1.0.2 was never released to WP.org.)
 
 = 1.0.1 =
 * Test with latest WordPress version
