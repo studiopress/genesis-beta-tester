@@ -6,7 +6,7 @@ orbs:
 jobs:
   test:
     docker:
-      - image: circleci/php:7.3.3-stretch-node-browsers
+      - image: cimg/php:8.1-node
     working_directory: ~/project
     steps:
       - checkout
@@ -15,7 +15,7 @@ jobs:
 
   zip_artifacts:
     docker:
-      - image: circleci/php:7.3.3-stretch-node-browsers
+      - image: cimg/php:8.1-node
     working_directory: ~/project
     steps:
       - checkout
@@ -41,7 +41,7 @@ jobs:
 
   svn_deploy_dry_run:
     docker:
-      - image: circleci/php:7.3.3-stretch-node-browsers
+      - image: cimg/php:8.1-node
     working_directory: ~/project
     steps:
       - checkout
@@ -51,7 +51,7 @@ jobs:
 
   svn_deploy_tag:
     docker:
-      - image: circleci/php:7.3.3-stretch-node-browsers
+      - image: cimg/php:8.1-node
     working_directory: ~/project
     steps:
       - checkout
