@@ -22,7 +22,6 @@ register_activation_hook( __FILE__, 'genesis_beta_tester_activation_hook' );
  * Activation Hook
  */
 function genesis_beta_tester_activation_hook() {
-
 	$latest = '1.9.2';
 
 	if ( 'genesis' !== basename( get_template_directory() ) ) {
@@ -39,7 +38,6 @@ function genesis_beta_tester_activation_hook() {
 
 	/** Delete the Genesis update transient to force an update check */
 	delete_transient( 'genesis-update' );
-
 }
 
 define( 'GENESIS_BETA_TESTER_DIR', plugin_dir_path( __FILE__ ) );
@@ -65,7 +63,7 @@ function genesis_beta_tester_check_for_upgrades() {
 	if ( ! file_exists( __DIR__ . '/includes/class-genesis-beta-tester-plugin-updater.php' ) ) {
 		return;
 	}
-	
+
 	$properties = array(
 		'plugin_slug'     => 'genesis-beta-tester',
 		'plugin_basename' => plugin_basename( __FILE__ ),

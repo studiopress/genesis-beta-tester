@@ -12,14 +12,11 @@
  * @since 1.0
  */
 class Genesis_Beta_Tester {
-
 	/** Constructor */
 	public function __construct() {
-
 		add_filter( 'http_request_args', array( $this, 'update_remote_post_options_filter' ), 10, 2 );
 
-		load_plugin_textdomain( 'genesis-beta-tester', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
-
+		load_plugin_textdomain( 'genesis-beta-tester', false, plugin_basename( __DIR__ ) . '/languages' );
 	}
 
 	/**
@@ -29,13 +26,10 @@ class Genesis_Beta_Tester {
 	 * @param array $url URL.
 	 */
 	public function update_remote_post_options_filter( $options, $url ) {
-
 		if ( 'https://api.genesistheme.com/update-themes/' === $url ) {
 			$options['body']['beta_tester'] = 1;
 		}
 
 		return $options;
-
 	}
-
 }
