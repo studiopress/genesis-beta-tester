@@ -59,7 +59,7 @@ function genesis_beta_tester_init() {
  * Does not run if plugin came from WP.org.
  */
 function genesis_beta_tester_check_for_upgrades() {
-	// This file only exists in WPE-hosted version of the plugin.
+	// This file only exists in the WPE-hosted version.
 	if ( ! file_exists( __DIR__ . '/includes/class-genesis-beta-tester-plugin-updater.php' ) ) {
 		return;
 	}
