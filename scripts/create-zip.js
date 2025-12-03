@@ -10,6 +10,27 @@ function getPluginVersion() {
 	return versionMatch ? versionMatch[1].trim() : "unknown";
 }
 
+function copyPluginUpdater() {
+	const sourcePath = path.join(
+		process.cwd(),
+		"scripts",
+		"class-genesis-beta-tester-plugin-updater.php"
+	);
+	const targetPath = path.join(
+		process.cwd(),
+		"includes",
+		"class-genesis-beta-tester-plugin-updater.php"
+	);
+
+	const includesDir = path.dirname(targetPath);
+	if (!fs.existsSync(includesDir)) {
+		fs.mkdirSync(includesDir, { recursive: true });
+	}
+
+	fs.copyFileSync(sourcePath, targetPath);
+	console.log("Copied class-genesis-beta-tester-plugin-updater.php to includes directory");
+}
+
 function getIgnorePatterns() {
 	const distignore = fs.readFileSync(".svnignore", "utf8");
 	return distignore
@@ -32,7 +53,7 @@ function runBuildSteps() {
 	try {
 		console.log("Generating language file...");
 		execSync(
-            "wp i18n make-pot . languages/genesis-beta-tester.pot --exclude=config,node_modules,scripts,vendor --headers='{ \"Report-Msgid-Bugs-To\": \"StudioPress <translations@studiopress.com>\" }' --exclude=bin/ --quiet",
+			"wp i18n make-pot . languages/genesis-beta-tester.pot --exclude=config,node_modules,scripts,vendor --headers='{ \"Report-Msgid-Bugs-To\": \"StudioPress <translations@studiopress.com>\" }' --exclude=bin/ --quiet",
 			{ stdio: "inherit" }
 		);
 		console.log("Build steps completed successfully.");
@@ -42,12 +63,44 @@ function runBuildSteps() {
 	}
 }
 
-function createZip() {
+function cleanupPluginUpdater() {
+	const targetPath = path.join(
+		process.cwd(),
+		"includes",
+		"class-genesis-beta-tester-plugin-updater.php"
+	);
+	if (fs.existsSync(targetPath)) {
+		fs.unlinkSync(targetPath);
+		console.log("Cleaned up class-genesis-beta-tester-plugin-updater.php from includes directory");
+	}
+}
+
+function ensureBuildDirectory(wpe = false) {
+	const buildDir = path.join(
+		process.cwd(),
+		"artifacts",
+		wpe ? "wpe" : "wp.org"
+	);
+	if (!fs.existsSync(buildDir)) {
+		fs.mkdirSync(buildDir, { recursive: true });
+	}
+	return buildDir;
+}
+
+function createZip(wpe = false) {
 	runBuildSteps();
 
 	const version = getPluginVersion();
 	const ignorePatterns = getIgnorePatterns();
-	const zipFileName = `genesis-beta-tester.${version}.zip`;
+	const buildDir = ensureBuildDirectory(wpe);
+	const zipFileName = path.join(
+		buildDir,
+		`genesis-beta-tester.${version}.zip`
+	);
+
+	if (wpe) {
+		copyPluginUpdater();
+	}
 
 	const zip = new AdmZip();
 
@@ -77,6 +130,12 @@ function createZip() {
 
 	zip.writeZip(zipFileName);
 	console.log(`Created ${zipFileName}`);
+
+	if (wpe) {
+		cleanupPluginUpdater();
+	}
 }
 
-createZip();
+const wpeFlag = process.argv.includes("--wpe");
+
+createZip(wpeFlag);

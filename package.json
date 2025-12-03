@@ -7,7 +7,9 @@
   },
   "scripts": {
     "zip": "node scripts/create-zip.js",
-    "zip:wpe:info": "node scripts/create-info.js"
+    "zip:wpe": "node scripts/create-zip.js --wpe && node scripts/create-info.js",
+    "zip:wpe:info": "node scripts/create-info.js",
+    "zip:all": "node scripts/create-zip.js && node scripts/create-zip.js --wpe && node scripts/create-info.js"
   },
   "devDependencies": {
     "adm-zip": "^0.5.16",

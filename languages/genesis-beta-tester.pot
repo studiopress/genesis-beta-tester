@@ -1,4 +1,4 @@
-# Copyright (C) 2024 Nathan Rice
+# Copyright (C) 2025 Nathan Rice
 # This file is distributed under the GNU General Public License v2.0 (or later).
 msgid ""
 msgstr ""
@@ -9,9 +9,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-10-14T12:51:08+00:00\n"
+"POT-Creation-Date: 2025-12-03T12:07:51+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.10.0\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: genesis-beta-tester\n"
 
 #. Plugin Name of the plugin
@@ -41,10 +41,12 @@ msgstr ""
 
 #. Translators: The string is a url to the genesis framework.
 #: genesis-beta-tester.php:31
+#, php-format
 msgid "Sorry, you can't activate unless you have installed <a href=\"%s\">Genesis</a>"
 msgstr ""
 
 #. Translators: The string is the lowest version of Genesis needed to activate.
 #: genesis-beta-tester.php:37
+#, php-format
 msgid "Sorry, you cannot activate without Genesis %s or greater"
 msgstr ""
