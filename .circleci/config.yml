@@ -106,9 +106,16 @@ workflows:
               only: /^\d+\.\d+\.\d+$/
             branches:
               ignore: /.*/
+      - wp-svn/check-versions:
+          filters:
+            tags:
+              only: /^\d+\.\d+\.\d+$/
+            branches:
+              only: /^release\/.*/
       - svn_deploy_tag:
           context: genesis-svn
           requires:
+            - wp-svn/check-versions
             - svn_deploy_dry_run
             - approval-for-plugin-deploy
           filters:
