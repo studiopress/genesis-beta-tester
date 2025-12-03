@@ -58,8 +58,14 @@ function genesis_beta_tester_init() {
 
 /**
  * Initialize checking of plugin updates from WP Engine.
+ * Does not run if plugin came from WP.org.
  */
 function genesis_beta_tester_check_for_upgrades() {
+	// This file only exists in WPE-hosted version of the plugin.
+	if ( ! file_exists( __DIR__ . '/includes/class-genesis-beta-tester-plugin-updater.php' ) ) {
+		return;
+	}
+	
 	$properties = array(
 		'plugin_slug'     => 'genesis-beta-tester',
 		'plugin_basename' => plugin_basename( __FILE__ ),
