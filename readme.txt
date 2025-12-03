@@ -5,6 +5,7 @@ Tags: genesis, genesiswp, studiopress
 Requires at least: 3.9
 Tested up to: 6.9
 Stable tag: 1.0.2
+Requires PHP: 8.3
 
 This plugin lets you one-click update to the latest Genesis release, even if it's still in beta.
 

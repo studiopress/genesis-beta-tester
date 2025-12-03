@@ -5,12 +5,13 @@
     "type": "git",
     "url": "https://github.com/copyblogger/genesis-beta-tester"
   },
-  "dependencies": {},
   "scripts": {
-    "zip": "node scripts/create-zip.js"
+    "zip": "node scripts/create-zip.js",
+    "zip:wpe:info": "node scripts/create-info.js"
   },
   "devDependencies": {
     "adm-zip": "^0.5.16",
+    "ajv": "^8.17.1",
     "minimatch": "^10.0.1"
   },
   "plugin": {

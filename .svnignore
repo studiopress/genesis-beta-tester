@@ -11,4 +11,5 @@ composer.json
 composer.lock
 node_modules
 scripts/
+artifacts/
 *.zip
