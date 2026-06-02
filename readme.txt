@@ -1,10 +1,11 @@
-=== Plugin Name ===
+=== Genesis Beta Tester ===
 Contributors: nathanrice, studiopress, wpmuguru
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5553118
 Tags: genesis, genesiswp, studiopress
 Requires at least: 3.9
-Tested up to: 6.9
+Tested up to: 7.0
 Stable tag: 1.0.2
+License: GPLv2 or later
 
 This plugin lets you one-click update to the latest Genesis release, even if it's still in beta.
 
