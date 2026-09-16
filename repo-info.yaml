@@ -4,7 +4,6 @@ metadata:
   name: genesis-beta-tester
 spec:
   type: repository
-  owner: team-gen
   engineeringExcellence:
     exemptedChecks:
       dependabotAutomationPresent:
